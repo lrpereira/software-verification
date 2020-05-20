@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
+"http://why3.lri.fr/why3session.dtd">
+<why3session shape_version="5">
+<file name="../genealogy.why">
+<theory name="Genealogy">
+ <goal name="Child_is_son_or_daughter">
+ </goal>
+ <goal name="Sibling_sym">
+ </goal>
+ <goal name="Sibling_is_brother_or_sister">
+ </goal>
+</theory>
+</file>
+</why3session>
