@@ -1,19 +1,19 @@
 #!/bin/bash
 
-./tseitin+ 2 x1 -a -b >> out
-./tseitin+ 2 x2 x1 h >> out
-./tseitin+ 1 x3 a b >> out
-./tseitin+ 2 x4 x3 -a >> out
-./tseitin+ 2 x5 x4 g >> out
-./tseitin+ 2 x6 x3 a  >> out
-./tseitin+ 2 x7 x6 f >> out
-./tseitin+ 1 x8 x5 x7 >> out
-./tseitin+ 1 x9 x2 x8 >> out
-./tseitin+ 2 x10 a f >> out
-./tseitin+ 2 x11 -a b >> out
-./tseitin+ 2 x12 x11 g >> out
-./tseitin+ 1 x13 x12 x2 >> out
-./tseitin+ 1 x14 x10 x13 >> out
-./tseitin+ 1 x15 -x9 -x14 >> out
-./tseitin+ 1 x16 x9 x14 >> out
-./tseitin+ 2 x17 x15 x16 >> out
+./exec 2 x1  -a  -b   >> out
+./exec 2 x2  x1  h    >> out
+./exec 1 x3  a   b    >> out
+./exec 2 x4  x3  -a   >> out
+./exec 2 x5  x4  g    >> out
+./exec 2 x6  x3  a    >> out
+./exec 2 x7  x6  f    >> out
+./exec 1 x8  x2  x5   >> out
+./exec 1 x9  x7  x8   >> out
+./exec 2 x10 a   f    >> out
+./exec 2 x11 -a  b    >> out
+./exec 2 x12 x11 g    >> out
+./exec 1 x13 x12 x10  >> out
+./exec 1 x14 x2  x13  >> out
+./exec 1 x15 -x9 -x14 >> out
+./exec 1 x16 x9  x14  >> out
+./exec 2 x17 x15 x16  >> out

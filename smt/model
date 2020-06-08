@@ -1,0 +1,66 @@
+;tij = start-time for the j-th task of the job i
+(declare-const t11 Int)
+(declare-const t12 Int)
+(declare-const t21 Int)
+(declare-const t22 Int)
+(declare-const t31 Int)
+(declare-const t32 Int)
+(declare-const max Int)
+
+; tij >= 0
+(assert (and (>= t11 0) (>= t12 0) (>= t21 0) (>= t22 0) (>= t31 0) (>= t32 0)))
+
+; for every i, j, tij+1 >= tij + dij
+(assert (>= t12 (+ t11 2)))
+(assert (>= t22 (+ t21 3)))
+(assert (>= t32 (+ t31 2)))
+
+; Machine 1
+(assert (or
+    (and (<= (+ t11 2) t21) (<= (+ t21 3) t31))
+    (and (<= (+ t11 2) t31) (<= (+ t31 2) t21))
+    (and (<= (+ t21 3) t11) (<= (+ t11 2) t31))
+    (and (<= (+ t21 3) t31) (<= (+ t31 2) t11))
+    (and (<= (+ t31 2) t21) (<= (+ t21 3) t11))
+    (and (<= (+ t31 2) t11) (<= (+ t11 2) t21))))
+
+; Machine 2
+(assert (or 
+    (and (<= (+ t12 1) t22) (<= (+ t22 1) t32))
+    (and (<= (+ t12 1) t32) (<= (+ t32 3) t22))
+    (and (<= (+ t22 1) t12) (<= (+ t12 1) t32))
+    (and (<= (+ t22 1) t32) (<= (+ t32 3) t12))
+    (and (<= (+ t32 3) t12) (<= (+ t12 1) t22))
+    (and (<= (+ t32 3) t22) (<= (+ t22 1) t12))))
+
+(assert (and 
+    (<= t11 max)
+    (<= t12 max)
+    (<= t21 max)
+    (<= t22 max)
+    (<= t31 max)
+    (<= t32 max)))
+
+; Podemos fazer todos os trabalhos com max = 10?
+(push)
+(assert( and( = max 10)))
+(check-sat)
+(pop)
+
+;Ainda é possível fazer todos os trabalhos em menos de 10 unidades de tempo?
+(push)
+(assert( and( < max 10)))
+(check-sat)
+(pop)
+
+; Ainda  é possível em 8 unidades de tempo?
+(push)
+(assert( and( = max 8 )))
+(check-sat)
+(pop)
+
+; Ainda  é possível em menos de 8 unidades de tempo?
+(push)
+(assert( and( < max 8)))
+(check-sat)
+(pop)
